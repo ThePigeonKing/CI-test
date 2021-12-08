@@ -1,5 +1,6 @@
 import sys
 
+
 # read and return all data from file
 def read_file(filename):
     with open(filename, "r") as f:
@@ -40,9 +41,9 @@ def find_mult(data):
     multip = 1
     for i in data:
         multip *= i
-        if multip >= sys.maxsize * 1000:
+        if multip >= sys.maxsize ** 2 :
             print(f"Value {multip} creates overflow")
-            raise OverflowError("Result is greater than sys.maxsize!")
+            raise OverflowError("Result is greater than sys.maxsize ^2!")
     return multip
 
 
