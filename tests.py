@@ -57,7 +57,7 @@ def test_read():
 
 def test_min():
     data = [10, 4, 3, 2]
-    assert fc.find_min(data) == 1
+    assert fc.find_min(data) == 2
 
 
 def test_max():
