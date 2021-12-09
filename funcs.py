@@ -4,10 +4,16 @@ import sys
 # read and return all data from file
 def read_file(filename):
     with open(filename, "r") as f:
-        data = f.read().replace("\n", " ")
+        data = f.read().replace("\n", " ").replace("\t", " ")
         data = data.split(" ")
+        data = [x if ("," not in x) else x.replace(",", ".") for x in data]
+        while 1:
+            try:
+                data.remove("")
+            except ValueError:
+                break
         try:
-            data = [int(x) for x in data]
+            data = [float(x) for x in data]
         except ValueError:
             print("[!Err] Can not read file correctly! Reset to 0")
             return [0]
@@ -44,7 +50,7 @@ def find_mult(data):
         if multip >= sys.maxsize ** 2 :
             print(f"Value {multip} creates overflow")
             raise OverflowError("Result is greater than sys.maxsize ^2!")
-    return multip
+    return round(multip, 3)
 
 
 def main_func():
